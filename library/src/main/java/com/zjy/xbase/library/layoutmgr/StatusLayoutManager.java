@@ -28,14 +28,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zjy.xbase.R;
-
 import androidx.annotation.CheckResult;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+
+import com.zjy.xbase.R;
 
 /**
  * 状态布局管理器
@@ -224,7 +224,7 @@ public class StatusLayoutManager {
         if (view != null && onStatusChildClickListener != null) {
             // 设置点击按钮点击时事件回调
             view.setOnClickListener(view1 -> {
-                Object tag = contentLayout.getTag(R.id.STATUS_LAYOUT_UTIL_TAG);
+                Object tag = contentLayout.getTag();
                 onStatusChildClickListener.onEmptyChildClick(view1, tag == null ? "" : tag.toString());
             });
         }
@@ -298,7 +298,7 @@ public class StatusLayoutManager {
         if (view != null && onStatusChildClickListener != null) {
             // 设置点击按钮点击时事件回调
             view.setOnClickListener(view1 -> {
-                Object tag = contentLayout.getTag(R.id.STATUS_LAYOUT_UTIL_TAG);
+                Object tag = contentLayout.getTag();
                 onStatusChildClickListener.onErrorChildClick(view1, tag == null ? "" : tag.toString());
             });
         }
@@ -401,7 +401,7 @@ public class StatusLayoutManager {
 
             // 设置点击按钮点击时事件回调
             clickView.setOnClickListener(view -> {
-                Object tag = contentLayout.getTag(R.id.STATUS_LAYOUT_UTIL_TAG);
+                Object tag = contentLayout.getTag();
                 onStatusChildClickListener.onCustomerChildClick(view, tag == null ? "" : tag.toString());
             });
         }

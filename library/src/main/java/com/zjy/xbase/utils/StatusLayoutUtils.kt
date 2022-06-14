@@ -161,25 +161,25 @@ class StatusLayoutUtils : OnStatusChildClickListener {
      * @return StatusLayoutManager 返回当前View对应的实例
      */
     fun add(view: View, stringTag: String) {
-        view.setTag(R.id.STATUS_LAYOUT_UTIL_TAG, stringTag)
+        view.tag = stringTag
         viewMap[stringTag] = StatusLayoutManager.Builder(view)
             .setLoadingLayout(loadingView)
             .setErrorLayout(errorView)
             .setEmptyLayout(emptyView)
             .setErrorClickViewID(errorRetryId)
             .setEmptyClickViewID(emptyRetryId)
-            .setDefaultLoadingText(config!!.defaultLoadingText)
-            .setDefaultEmptyText(config!!.defaultEmptyText)
-            .setDefaultEmptyImg(config!!.defaultEmptyImg)
-            .setDefaultEmptyClickViewText(config!!.defaultEmptyRetryText)
-            .setDefaultEmptyClickViewTextColor(config!!.defaultEmptyRetryTextColor)
-            .setDefaultEmptyClickViewVisible(config!!.defaultEmptyRetryVisible)
-            .setDefaultErrorText(config!!.defaultErrorText)
-            .setDefaultEmptyImg(config!!.defaultErrorImg)
-            .setDefaultErrorClickViewText(config!!.defaultErrorRetryText)
-            .setDefaultErrorClickViewTextColor(config!!.defaultErrorRetryTextColor)
-            .setDefaultErrorClickViewVisible(config!!.defaultErrorRetryVisible)
-            .setDefaultLayoutsBackgroundColor(config!!.defaultLayoutBackgroundColor)
+            .setDefaultLoadingText(config.defaultLoadingText)
+            .setDefaultEmptyText(config.defaultEmptyText)
+            .setDefaultEmptyImg(config.defaultEmptyImg)
+            .setDefaultEmptyClickViewText(config.defaultEmptyRetryText)
+            .setDefaultEmptyClickViewTextColor(config.defaultEmptyRetryTextColor)
+            .setDefaultEmptyClickViewVisible(config.defaultEmptyRetryVisible)
+            .setDefaultErrorText(config.defaultErrorText)
+            .setDefaultEmptyImg(config.defaultErrorImg)
+            .setDefaultErrorClickViewText(config.defaultErrorRetryText)
+            .setDefaultErrorClickViewTextColor(config.defaultErrorRetryTextColor)
+            .setDefaultErrorClickViewVisible(config.defaultErrorRetryVisible)
+            .setDefaultLayoutsBackgroundColor(config.defaultLayoutBackgroundColor)
             .setOnStatusChildClickListener(this)
             .build()
     }
@@ -223,8 +223,7 @@ class StatusLayoutUtils : OnStatusChildClickListener {
      */
     fun showCustomLayout(layoutId: Int, stringTag: String) {
         viewMap[stringTag]?.showCustomLayout(
-            layoutInflate.inflate(layoutId, null)
-                .apply { setTag(R.id.STATUS_LAYOUT_UTIL_TAG, stringTag) })
+            layoutInflate.inflate(layoutId, null).apply { tag = stringTag })
     }
 
     /**
@@ -235,8 +234,7 @@ class StatusLayoutUtils : OnStatusChildClickListener {
      */
     fun showCustomLayout(layoutId: Int, vararg ids: Int, stringTag: String) {
         viewMap[stringTag]?.showCustomLayout(
-            layoutInflate.inflate(layoutId, null)
-                .apply { setTag(R.id.STATUS_LAYOUT_UTIL_TAG, stringTag) }, *ids
+            layoutInflate.inflate(layoutId, null).apply { tag = stringTag }, *ids
         )
     }
 
