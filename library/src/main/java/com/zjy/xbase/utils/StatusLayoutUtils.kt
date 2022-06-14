@@ -60,7 +60,7 @@ class StatusLayoutUtils : OnStatusChildClickListener {
         private var errorRetryId: Int = R.id.status_layout_manager_bt_status_error_click
 
         //切换布局的配置文件
-        private var config: StatusLayoutManagerConfig? = null
+        private lateinit var config: StatusLayoutManagerConfig
 
         /**
          * 如果要使用该工具类，必须在Application中调用本方法进行初始化(使用该方法将使用默认的布局)
@@ -136,6 +136,14 @@ class StatusLayoutUtils : OnStatusChildClickListener {
          */
         fun setConfig(config: StatusLayoutManagerConfig) {
             this.config = config
+        }
+
+        /**
+         * 获取当前的配置
+         * @return config 配置信息
+         */
+        fun getConfig(): StatusLayoutManagerConfig {
+            return this.config
         }
     }
 
