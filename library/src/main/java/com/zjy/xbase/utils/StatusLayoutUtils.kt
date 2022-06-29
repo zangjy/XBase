@@ -161,6 +161,17 @@ class StatusLayoutUtils : OnStatusChildClickListener {
      * @return StatusLayoutManager 返回当前View对应的实例
      */
     fun add(view: View, stringTag: String) {
+        add(view, stringTag, config)
+    }
+
+    /**
+     * 增加一个需要切换布局的View
+     * @param view 需要切换的View
+     * @param stringTag 如果页面中设置了多个，可以根据该字段进行区分
+     * @param config 可以给该View设置一个单独的配置
+     * @return StatusLayoutManager 返回当前View对应的实例
+     */
+    fun add(view: View, stringTag: String, config: StatusLayoutManagerConfig) {
         view.tag = stringTag
         viewMap[stringTag] = StatusLayoutManager.Builder(view)
             .setLoadingLayout(loadingView)
