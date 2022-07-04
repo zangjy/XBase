@@ -146,7 +146,7 @@ XPopup弹窗库：<https://github.com/li-xiaojun/XPopup>
 
 RecyclerView适配器(已不再维护)：<https://github.com/Vanish136/RecyclerViewAdapter>
 
-切换不同状态布局(已不再维护)：<https://github.com/Bakumon/StatusLayoutManager>
+切换不同状态布局：<https://github.com/liangjingkanji/StateLayout>
 
 切换不同状态布局：<https://github.com/li-xiaojun/StateLayout>
 
