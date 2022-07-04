@@ -21,16 +21,11 @@ abstract class BaseActivity<VB : ViewDataBinding>() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        initViewModel()
         initData()
         initObserver()
         setListener()
+        initFinished()
     }
-
-    /**
-     * 推荐在该方法中初始化ViewModel
-     */
-    abstract fun initViewModel()
 
     /**
      * 推荐在该方法中初始化数据
@@ -46,6 +41,11 @@ abstract class BaseActivity<VB : ViewDataBinding>() : AppCompatActivity() {
      * 推荐在该方法中设置点击事件
      */
     abstract fun setListener()
+
+    /**
+     * 初始化完成
+     */
+    abstract fun initFinished()
 
     /**
      * 获取ViewModel

@@ -1,11 +1,9 @@
 package com.zjy.xbase.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -23,12 +21,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         method.invoke(null, layoutInflater) as VB
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initViewModel()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,12 +34,8 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         initData()
         initObserver()
         setListener()
+        initFinished()
     }
-
-    /**
-     * 推荐在该方法中初始化ViewModel
-     */
-    abstract fun initViewModel()
 
     /**
      * 推荐在该方法中初始化数据
@@ -64,6 +52,10 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
      */
     abstract fun setListener()
 
+    /**
+     * 初始化完成
+     */
+    abstract fun initFinished()
 
     /**
      * 获取ViewModel

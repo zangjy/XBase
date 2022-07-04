@@ -11,11 +11,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         getViewModel(this, MainVM::class.java)
     }
 
-    override fun initViewModel() {
-        binding.mainVM = mVM
-    }
-
     override fun initData() {
+        binding.mainVM = mVM
         //查询版本信息
         mVM.version()
     }
@@ -25,6 +22,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun setListener() {
+
+    }
+
+    override fun initFinished() {
 
     }
 }

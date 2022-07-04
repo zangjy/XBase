@@ -10,10 +10,10 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
         super.onResume()
         //增加了Fragment是否可见的判断
         if (!isLoaded && !isHidden) {
-            lazyInitViewModel()
             lazyInitData()
             lazyInitObserver()
             lazySetListener()
+            lazyInitFinished()
             isLoaded = true
         }
     }
@@ -22,11 +22,6 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
         super.onDestroyView()
         isLoaded = false
     }
-
-    /**
-     * 推荐在该方法中初始化ViewModel
-     */
-    abstract fun lazyInitViewModel()
 
     /**
      * 推荐在该方法中初始化数据
@@ -44,11 +39,9 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
     abstract fun lazySetListener()
 
     /**
-     * 不要重写这个方法去做任何事
+     * 初始化完成
      */
-    override fun initViewModel() {
-
-    }
+    abstract fun lazyInitFinished()
 
     /**
      * 不要重写这个方法去做任何事
@@ -68,6 +61,13 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
      * 不要重写这个方法去做任何事
      */
     override fun setListener() {
+
+    }
+
+    /**
+     * 不要重写这个方法去做任何事
+     */
+    override fun initFinished() {
 
     }
 }
