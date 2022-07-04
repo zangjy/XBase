@@ -3,7 +3,6 @@ package com.zjy.sample
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.zjy.xbase.utils.StatusLayoutUtils
 
 /**
  * 文件名：App
@@ -14,7 +13,6 @@ import com.zjy.xbase.utils.StatusLayoutUtils
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        StatusLayoutUtils.init(this)
     }
 
     override fun attachBaseContext(base: Context) {
