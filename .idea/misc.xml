@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/WorkSpace/AndroidStudioWorkSpace/XBase/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/WorkSpace/AndroidStudioWorkSpace/XBase/app/src/main/res/layout/fragment_a.xml" value="0.25364583333333335" />
+        <entry key="..\:/WorkSpace/AndroidStudioWorkSpace/XBase/library/src/main/res/drawable/utils_toast_bg.xml" value="0.141" />
+        <entry key="..\:/WorkSpace/AndroidStudioWorkSpace/XBase/library/src/main/res/layout/customactivityoncrash_default_error_activity.xml" value="0.253125" />
+        <entry key="..\:/WorkSpace/AndroidStudioWorkSpace/XBase/library/src/main/res/layout/utils_toast_view.xml" value="0.21851851851851853" />
+        <entry key="..\:/WorkSpace/AndroidStudioWorkSpace/XBase/sample/src/main/res/layout/activity_main.xml" value="0.20185185185185187" />
+        <entry key="..\:/WorkSpace/XBase/app/src/main/res/layout/activity_demo.xml" value="0.34427083333333336" />
+        <entry key="..\:/WorkSpace/XBase/app/src/main/res/layout/activity_main.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/app/src/main/res/layout/empty_layout.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/app/src/main/res/layout/error_layout.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/app/src/main/res/layout/fragment_test.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/app/src/main/res/layout/loading_layout.xml" value="0.3578125" />
+        <entry key="..\:/WorkSpace/XBase/app/src/main/res/layout/view_notification.xml" value="0.3351851851851852" />
+        <entry key="..\:/WorkSpace/XBase/library/src/main/res/drawable/utils_toast_bg.xml" value="0.278" />
+        <entry key="..\:/WorkSpace/XBase/library/src/main/res/layout/customactivityoncrash_default_error_activity.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/library/src/main/res/layout/layout_status_layout_manager_empty.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/library/src/main/res/layout/layout_status_layout_manager_error.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/library/src/main/res/layout/layout_status_layout_manager_loading.xml" value="0.35885416666666664" />
+        <entry key="..\:/WorkSpace/XBase/library/src/main/res/layout/utils_toast_view.xml" value="0.35885416666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Embedded JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
