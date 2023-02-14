@@ -64,11 +64,11 @@ dataBinding {
 api 'com.squareup.retrofit2:retrofit:2.9.0'
 api 'com.squareup.retrofit2:converter-gson:2.9.0'
 //Gson解析容错：https://github.com/getActivity/GsonFactory
-api 'com.github.getActivity:GsonFactory:6.3'
+api 'com.github.getActivity:GsonFactory:6.5'
 //Json 解析框架：https://github.com/google/gson
-api 'com.google.code.gson:gson:2.9.1'
+api 'com.google.code.gson:gson:2.10.1'
 //弹窗库（https://github.com/li-xiaojun/XPopup）
-api 'com.github.li-xiaojun:XPopup:2.9.7'
+api 'com.github.li-xiaojun:XPopup:2.9.19'
 
 // ViewModel
 api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
