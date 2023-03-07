@@ -6,4 +6,4 @@ package com.zjy.xbase.callback
  * 创建日期：2023/2/13
  * 描述：
  */
-data class BaseCallBack<T>(val isSuccess: Boolean, val data: T)
+data class BaseCallBack<T>(val isSuccess: Boolean, val message: String = "", val data: T)
