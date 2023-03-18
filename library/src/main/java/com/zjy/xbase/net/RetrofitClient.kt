@@ -22,11 +22,15 @@ object RetrofitClient {
             .build()
     }
 
-    fun <T> getService(serviceClass: Class<T>, baseUrl: String): T {
+    fun <T> getService(baseUrl: String, serviceClass: Class<T>): T {
+        return getService(client, baseUrl, serviceClass)
+    }
+
+    fun <T> getService(client: OkHttpClient, baseUrl: String, serviceClass: Class<T>): T {
         return Retrofit.Builder()
+            .client(client)
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSingletonGson()))
-            .client(client)
             .build()
             .create(serviceClass)
     }
