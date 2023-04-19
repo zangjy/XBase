@@ -20,6 +20,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     val binding get() = requireNotNull(_binding) { "The property of binding has been destroyed." }
 
+    @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

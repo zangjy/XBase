@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
  */
 class MainVM() : ViewModel() {
 
-    private val client = RetrofitClient.getService(API::class.java, "https://api.sdymei.com/")
+    private val client = RetrofitClient.getService("https://api.sdymei.com/", API::class.java)
 
     var versionModel = ObservableField<VersionModel>()
 

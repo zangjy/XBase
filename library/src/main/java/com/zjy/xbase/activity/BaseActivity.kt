@@ -11,6 +11,7 @@ import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VB : ViewDataBinding>() : AppCompatActivity() {
 
+    @Suppress("UNCHECKED_CAST")
     val binding: VB by lazy {
         val type = javaClass.genericSuperclass as ParameterizedType
         val aClass = type.actualTypeArguments[0] as Class<*>
