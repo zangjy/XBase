@@ -3,7 +3,8 @@ package com.zjy.sample.activity
 import com.zjy.sample.databinding.ActivityMainBinding
 import com.zjy.sample.viewmodel.MainVM
 import com.zjy.xbase.activity.BaseActivity
-
+import com.zjy.xbase.utils.ToastUtils
+import com.zjy.xbase.viewmodel.getViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -12,20 +13,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initData() {
-        binding.mainVM = mVM
-        //查询版本信息
+        //查询版本
         mVM.version()
     }
 
-    override fun initObserver() {
-
+    override fun initObservers() {
+        mVM.versionRequestState.observe(this) { state ->
+            state.map(success = {
+                binding.tvDownLoadUrl.text = it.data
+            }, error = {
+                ToastUtils.showShort(it.message.toString())
+            })
+        }
     }
 
-    override fun setListener() {
-
-    }
-
-    override fun initFinished() {
+    override fun initListeners() {
 
     }
 }

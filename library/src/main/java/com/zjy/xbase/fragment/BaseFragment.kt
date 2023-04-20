@@ -11,14 +11,13 @@ import androidx.lifecycle.*
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
-
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     private var _binding: VB? = null
 
     private val handler by lazy { Handler(Looper.getMainLooper()) }
 
-    val binding get() = requireNotNull(_binding) { "The property of binding has been destroyed." }
+    val binding get() = requireNotNull(_binding) { "ViewBinding已被销毁" }
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
@@ -44,9 +43,8 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initData()
-        initObserver()
-        setListener()
-        initFinished()
+        initObservers()
+        initListeners()
     }
 
     /**
@@ -57,27 +55,10 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     /**
      * 推荐在该方法中初始化Observer
      */
-    abstract fun initObserver()
+    abstract fun initObservers()
 
     /**
      * 推荐在该方法中设置点击事件
      */
-    abstract fun setListener()
-
-    /**
-     * 初始化完成
-     */
-    abstract fun initFinished()
-
-    /**
-     * 获取ViewModel
-     * @param viewModelStoreOwner 作用域
-     * @param modelClass ViewModel类
-     */
-    fun <T : ViewModel> getViewModel(
-        viewModelStoreOwner: ViewModelStoreOwner,
-        modelClass: Class<T>
-    ): T {
-        return ViewModelProvider(viewModelStoreOwner)[modelClass]
-    }
+    abstract fun initListeners()
 }
