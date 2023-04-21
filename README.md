@@ -9,7 +9,7 @@
 1.添加依赖
 
 ```
-implementation 'com.github.zangjy:XBase:版本号看上面'
+implementation 'com.github.zangjy:XBase:版本号👆'
 ```
 
 2.在工程根目录的`build.gradle`中添加如下：
@@ -67,8 +67,6 @@ api 'com.squareup.retrofit2:converter-gson:2.9.0'
 api 'com.github.getActivity:GsonFactory:6.5'
 //Json解析框架：https://github.com/google/gson
 api 'com.google.code.gson:gson:2.10.1'
-//弹窗库：https://github.com/li-xiaojun/XPopup
-api 'com.github.li-xiaojun:XPopup:2.9.19'
 //解决LiveData出现数据倒灌问题：https://github.com/KunMinX/UnPeek-LiveData
 api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
@@ -80,8 +78,8 @@ api 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 api 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
 // Saved state module for ViewModel
 api 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
-api 'androidx.navigation:navigation-fragment-ktx:2.5.1'
-api 'androidx.navigation:navigation-ui-ktx:2.5.1'
+api 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+api 'androidx.navigation:navigation-ui-ktx:2.5.3'
 ```
 
 # XBase里已经添加过的权限

@@ -52,7 +52,6 @@
     </queries>
 
     <application>
-
         <activity
             android:name="com.zjy.xbase.utils.UtilsTransActivity4MainProcess"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -67,10 +66,6 @@
             android:multiprocess="true"
             android:theme="@style/ActivityTranslucent"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
-
-        <activity
-            android:name=".library.CustomActivityOnCrash.activity.DefaultErrorActivity"
-            android:process=":error_activity" />
 
         <provider
             android:name="com.zjy.xbase.utils.UtilsFileProvider"

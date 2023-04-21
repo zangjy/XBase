@@ -1,13 +1,12 @@
 package com.zjy.sample.viewmodel
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.kunminx.architecture.domain.message.MutableResult
 import com.zjy.sample.model.VersionModel
 import com.zjy.sample.net.API
 import com.zjy.xbase.net.RequestState
 import com.zjy.xbase.net.RetrofitClient
-import com.zjy.xbase.viewmodel.request
+import com.zjy.xbase.viewmodel.requestWithResult
 
 /**
  * 文件名：MainVM
@@ -25,13 +24,7 @@ class MainVM() : ViewModel() {
      * 查询版本
      * @return Job
      */
-    fun version() = request({
+    fun version() = requestWithResult(versionRequestState) {
         client.version("40", "xiaohei")
-    }, {
-        versionRequestState.value = RequestState.Success(it)
-    }, {
-        versionRequestState.value = RequestState.Error(it)
-    }, {
-        versionRequestState.value = RequestState.Complete
-    })
+    }
 }
