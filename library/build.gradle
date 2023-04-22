@@ -54,13 +54,13 @@ dependencies {
     api 'com.github.li-xiaojun:XPopup:2.9.19'
 
     // ViewModel
-    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:${LIFECYCLE_VERSION}"
     // LiveData
-    api 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    api "androidx.lifecycle:lifecycle-livedata-ktx:${LIFECYCLE_VERSION}"
     // Lifecycles only (without ViewModel or LiveData)
-    api 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    api "androidx.lifecycle:lifecycle-runtime-ktx:${LIFECYCLE_VERSION}"
     // Saved state module for ViewModel
-    api 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
-    api 'androidx.navigation:navigation-fragment-ktx:2.5.1'
-    api 'androidx.navigation:navigation-ui-ktx:2.5.1'
+    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:${LIFECYCLE_VERSION}"
+    api "androidx.navigation:navigation-fragment-ktx:${NAV_VERSION}"
+    api "androidx.navigation:navigation-ui-ktx:${NAV_VERSION}"
 }

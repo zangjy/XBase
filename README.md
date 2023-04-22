@@ -9,7 +9,7 @@
 1.添加依赖
 
 ```
-implementation 'com.github.zangjy:XBase:版本号看上面'
+implementation 'com.github.zangjy:XBase:版本号👆'
 ```
 
 2.在工程根目录的`build.gradle`中添加如下：
@@ -78,8 +78,8 @@ api 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 api 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
 // Saved state module for ViewModel
 api 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
-api 'androidx.navigation:navigation-fragment-ktx:2.5.1'
-api 'androidx.navigation:navigation-ui-ktx:2.5.1'
+api 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+api 'androidx.navigation:navigation-ui-ktx:2.5.3'
 ```
 
 # XBase里已经添加过的权限
