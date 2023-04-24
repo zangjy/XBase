@@ -1,10 +1,6 @@
-package com.zjy.xbase.viewmodel
+package com.zjy.xbase.ext
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewModelScope
 import com.kunminx.architecture.domain.message.MutableResult
 import com.zjy.xbase.net.RequestState
@@ -12,35 +8,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 /**
- * 在Activity中获取ViewModel实例
- * @receiver AppCompatActivity
- * @param viewModelStoreOwner 作用域
- * @param modelClass ViewModel类
- * @return ViewModel实例
- */
-fun <T : ViewModel> AppCompatActivity.getViewModel(
-    viewModelStoreOwner: ViewModelStoreOwner,
-    modelClass: Class<T>
-): T {
-    return ViewModelProvider(viewModelStoreOwner)[modelClass]
-}
-
-/**
- * 在Fragment中获取ViewModel实例
- * @receiver Fragment
- * @param viewModelStoreOwner 作用域
- * @param modelClass ViewModel类
- * @return ViewModel实例
- */
-fun <T : ViewModel> Fragment.getViewModel(
-    viewModelStoreOwner: ViewModelStoreOwner,
-    modelClass: Class<T>
-): T {
-    return ViewModelProvider(viewModelStoreOwner)[modelClass]
-}
-
-/**
- * 网络请求，使用协程进行异步处理，通过 [result] 回调处理请求结果，包括请求状态 [RequestState] 和请求结果 [T]
+ * 执行耗时操作，使用协程进行异步处理，通过 [result] 回调处理请求结果，包括请求状态 [RequestState] 和请求结果 [T]
  * @receiver ViewModel
  * @param result 请求结果回调函数，参数为 [RequestState]，包括请求状态 [RequestState] 和请求结果 [T]
  * @param block 请求代码块，需要使用 `suspend` 修饰
@@ -60,7 +28,7 @@ fun <T> ViewModel.requestWithResult(
 }
 
 /**
- * 网络请求，使用协程进行异步处理，通过 [onSuccess]、[onError]回调处理请求结果，[onComplete]回调处理请求完成事件
+ * 执行耗时操作，使用协程进行异步处理，通过 [onSuccess]、[onError]回调处理请求结果，[onComplete]回调处理请求完成事件
  * @receiver ViewModel
  * @param block 请求代码块，需要使用 `suspend` 修饰
  * @param onSuccess 请求成功回调函数，参数为请求结果 [T]

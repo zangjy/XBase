@@ -3,8 +3,8 @@ package com.zjy.sample.activity
 import com.zjy.sample.databinding.ActivityMainBinding
 import com.zjy.sample.viewmodel.MainVM
 import com.zjy.xbase.activity.BaseActivity
+import com.zjy.xbase.ext.getViewModel
 import com.zjy.xbase.utils.ToastUtils
-import com.zjy.xbase.viewmodel.getViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
