@@ -1,10 +1,10 @@
 package com.zjy.sample.activity
 
+import android.widget.Toast
 import com.zjy.sample.databinding.ActivityMainBinding
 import com.zjy.sample.viewmodel.MainVM
 import com.zjy.xbase.activity.BaseActivity
 import com.zjy.xbase.ext.getViewModel
-import com.zjy.xbase.utils.ToastUtils
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -22,7 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             state.map(success = {
                 binding.tvDownLoadUrl.text = it.data
             }, error = {
-                ToastUtils.showShort(it.message.toString())
+                Toast.makeText(applicationContext, it.message.toString(), Toast.LENGTH_SHORT).show()
             })
         }
     }
