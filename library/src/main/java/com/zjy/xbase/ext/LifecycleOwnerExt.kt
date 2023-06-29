@@ -1,56 +1,89 @@
 package com.zjy.xbase.ext
 
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.kunminx.architecture.domain.message.MutableResult
-import com.zjy.xbase.net.RequestState
+import com.zjy.xbase.net.DoAsyncState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
- * 执行耗时操作，使用协程进行异步处理，通过 [result] 回调处理请求结果，包括请求状态 [RequestState] 和请求结果 [T]
+ * 执行简化的异步操作，将结果更新到MutableResult中
+ *
  * @receiver LifecycleOwner
- * @param result 请求结果回调函数，参数为 [RequestState]，包括请求状态 [RequestState] 和请求结果 [T]
- * @param block 请求代码块，需要使用 `suspend` 修饰
- * @return Job  [Job]对象，用于取消请求
+ * @param mutableResult 结果对象，用于存储异步操作的结果
+ * @param block 异步操作的逻辑
+ * @return 返回一个Job对象，可以用于取消异步任务
  */
-fun <T> LifecycleOwner.requestWithResult(
-    result: MutableResult<RequestState<T>>,
+fun <T> LifecycleOwner.doAsyncWithMutableResult(
+    mutableResult: MutableResult<DoAsyncState<T>>,
     block: suspend () -> T
 ): Job {
-    result.value = RequestState.Loading
-    return request(
+    return doAsync(
         block = block,
-        onSuccess = { result.value = RequestState.Success(it) },
-        onError = { result.value = RequestState.Error(it) },
-        onComplete = { result.value = RequestState.Complete }
+        onLoading = { mutableResult.value = DoAsyncState.Loading },
+        onSuccess = { mutableResult.value = DoAsyncState.Success(it) },
+        onError = { mutableResult.value = DoAsyncState.Error(it) },
+        onComplete = { mutableResult.value = DoAsyncState.Complete }
     )
 }
 
 /**
- * 执行耗时操作，使用协程进行异步处理，通过 [onSuccess]、[onError]回调处理请求结果，[onComplete]回调处理请求完成事件
+ * 执行异步操作，并提供回调函数来处理不同的结果
+ *
  * @receiver LifecycleOwner
- * @param block 请求代码块，需要使用 `suspend` 修饰
- * @param onSuccess 请求成功回调函数，参数为请求结果 [T]
- * @param onError 请求失败回调函数，参数为 [Throwable]，即请求失败的异常信息
- * @param onComplete 请求完成回调函数
- * @return Job [Job]对象，用于取消请求
+ * @param block 异步操作的逻辑
+ * @param onLoading 操作正在进行或加载时的回调函数
+ * @param onSuccess 成功时的回调函数，参数为异步操作的结果
+ * @param onError 失败时的回调函数，参数为异常对象
+ * @param onComplete 完成时的回调函数
+ * @param requiredState 应该被调用的最低生命周期状态
+ * @return 返回一个Job对象，可以用于取消异步任务
  */
-fun <T> LifecycleOwner.request(
+fun <T> LifecycleOwner.doAsync(
     block: suspend () -> T,
+    onLoading: () -> Unit = {},
     onSuccess: (T) -> Unit,
     onError: (throwable: Throwable) -> Unit = {},
-    onComplete: () -> Unit = {}
+    onComplete: () -> Unit = {},
+    requiredState: Lifecycle.State = Lifecycle.State.STARTED
 ): Job {
     return lifecycleScope.launch {
+        withContext(Dispatchers.Main) {
+            onLoading()
+        }
         kotlin.runCatching {
             block()
         }.onSuccess {
-            onSuccess(it)
+            withContext(Dispatchers.Main) {
+                if (isLifecycleStateAtLeast(requiredState)) {
+                    onSuccess(it)
+                }
+            }
         }.onFailure {
-            onError(it)
+            withContext(Dispatchers.Main) {
+                if (isLifecycleStateAtLeast(requiredState)) {
+                    onError(it)
+                }
+            }
         }.also {
-            onComplete()
+            withContext(Dispatchers.Main) {
+                if (isLifecycleStateAtLeast(requiredState)) {
+                    onComplete()
+                }
+            }
         }
     }
+}
+
+/**
+ * 检查页面是否处于指定状态或更高状态
+ * @receiver LifecycleOwner
+ * @return 如果页面处于指定状态或更高状态返回true，否则为false
+ */
+private fun LifecycleOwner.isLifecycleStateAtLeast(requiredState: Lifecycle.State): Boolean {
+    return lifecycle.currentState.isAtLeast(requiredState)
 }

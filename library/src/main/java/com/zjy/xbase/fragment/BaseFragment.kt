@@ -12,7 +12,6 @@ import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
-
     private var _binding: VB? = null
 
     private val handler by lazy { Handler(Looper.getMainLooper()) }

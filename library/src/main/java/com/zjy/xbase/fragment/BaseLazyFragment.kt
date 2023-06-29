@@ -3,7 +3,6 @@ package com.zjy.xbase.fragment
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
-
     private var isLoaded = false
 
     override fun onResume() {
