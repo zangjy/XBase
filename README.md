@@ -85,45 +85,7 @@ api 'androidx.navigation:navigation-ui-ktx:2.5.3'
 # XBase里已经添加过的权限
 
 ```
-<!-- app -->
-<uses-permission android:name="android.permission.WRITE_SETTINGS" />
-<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-<uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
-
-<!-- bar -->
-<uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
-
-<!-- 读写内存 -->
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-
-<!-- flashlight -->
-<uses-permission android:name="android.permission.CAMERA" />
-<uses-permission android:name="android.permission.FLASHLIGHT" />
-
-<!-- network -->
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.INTERNET" />
-
-<!-- permission -->
-<uses-permission android:name="android.permission.READ_CALENDAR" />
-<uses-permission android:name="android.permission.RECORD_AUDIO" />
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
-<!-- phone -->
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.CALL_PHONE" />
-<uses-permission android:name="android.permission.READ_CONTACTS" />
-
-<!-- process -->
-<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-
-<!-- vibrate -->
-<uses-permission android:name="android.permission.VIBRATE" />
 ```
 
 # 常用框架
