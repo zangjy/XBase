@@ -41,23 +41,23 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initData()
         initObservers()
         initListeners()
+        initData()
     }
 
     /**
-     * 推荐在该方法中初始化数据
-     */
-    abstract fun initData()
-
-    /**
-     * 推荐在该方法中初始化Observer
+     * 在该方法中初始化Observer
      */
     abstract fun initObservers()
 
     /**
-     * 推荐在该方法中设置点击事件
+     * 在该方法中设置点击事件
      */
     abstract fun initListeners()
+
+    /**
+     * 在该方法中初始化数据
+     */
+    abstract fun initData()
 }

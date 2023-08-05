@@ -9,9 +9,9 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
         super.onResume()
         //增加了Fragment是否可见的判断
         if (!isLoaded && !isHidden) {
-            lazyInitData()
             lazyInitObservers()
             lazyInitListeners()
+            lazyInitData()
             isLoaded = true
         }
     }
@@ -22,38 +22,30 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
     }
 
     /**
-     * 推荐在该方法中初始化数据
-     */
-    abstract fun lazyInitData()
-
-    /**
-     * 推荐在该方法中初始化Observer
+     * 在该方法中初始化Observer
      */
     abstract fun lazyInitObservers()
 
     /**
-     * 推荐在该方法中设置点击事件
+     * 在该方法中设置点击事件
      */
     abstract fun lazyInitListeners()
 
     /**
-     * 不要重写这个方法去做任何事
+     * 在该方法中初始化数据
      */
-    override fun initData() {
+    abstract fun lazyInitData()
+
+
+    final override fun initObservers() {
 
     }
 
-    /**
-     * 不要重写这个方法去做任何事
-     */
-    override fun initObservers() {
+    final override fun initListeners() {
 
     }
 
-    /**
-     * 不要重写这个方法去做任何事
-     */
-    override fun initListeners() {
+    final override fun initData() {
 
     }
 }
