@@ -64,22 +64,22 @@ dataBinding {
 api 'com.squareup.retrofit2:retrofit:2.9.0'
 api 'com.squareup.retrofit2:converter-gson:2.9.0'
 //Gson解析容错：https://github.com/getActivity/GsonFactory
-api 'com.github.getActivity:GsonFactory:6.5'
+api 'com.github.getActivity:GsonFactory:8.0'
 //Json解析框架：https://github.com/google/gson
 api 'com.google.code.gson:gson:2.10.1'
 //解决LiveData出现数据倒灌问题：https://github.com/KunMinX/UnPeek-LiveData
 api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
 // ViewModel
-api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
 // LiveData
-api 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+api 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
 // Lifecycles only (without ViewModel or LiveData)
-api 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+api 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
 // Saved state module for ViewModel
-api 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
-api 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-api 'androidx.navigation:navigation-ui-ktx:2.5.3'
+api 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1'
+api 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+api 'androidx.navigation:navigation-ui-ktx:2.6.0'
 ```
 
 # XBase里已经添加过的权限

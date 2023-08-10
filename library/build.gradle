@@ -1,11 +1,12 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
     namespace 'com.zjy.xbase'
-    
+
     compileSdk 33
 
     defaultConfig {
@@ -49,7 +50,7 @@ dependencies {
     api 'com.squareup.retrofit2:retrofit:2.9.0'
     api 'com.squareup.retrofit2:converter-gson:2.9.0'
     //Gson解析容错：https://github.com/getActivity/GsonFactory
-    api 'com.github.getActivity:GsonFactory:6.5'
+    api 'com.github.getActivity:GsonFactory:8.0'
     //Json解析框架：https://github.com/google/gson
     api 'com.google.code.gson:gson:2.10.1'
     //解决LiveData出现数据倒灌问题：https://github.com/KunMinX/UnPeek-LiveData
