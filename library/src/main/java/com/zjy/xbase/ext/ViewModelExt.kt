@@ -53,7 +53,9 @@ fun <T> ViewModel.doAsync(
             onLoading()
         }
         kotlin.runCatching {
-            block()
+            withContext(Dispatchers.IO) {
+                block()
+            }
         }.onSuccess {
             withContext(Dispatchers.Main) {
                 onSuccess(it)
