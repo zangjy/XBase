@@ -12,7 +12,6 @@ import kotlinx.coroutines.withContext
 
 /**
  * 执行简化的异步操作，将结果更新到MutableResult中
- *
  * @receiver LifecycleOwner
  * @param mutableResult 结果对象，用于存储异步操作的结果
  * @param block 异步操作的逻辑
@@ -33,7 +32,6 @@ fun <T> LifecycleOwner.doAsyncWithMutableResult(
 
 /**
  * 执行异步操作，并提供回调函数来处理不同的结果
- *
  * @receiver LifecycleOwner
  * @param block 异步操作的逻辑
  * @param onLoading 操作正在进行或加载时的回调函数
@@ -55,6 +53,7 @@ fun <T> LifecycleOwner.doAsync(
         withContext(Dispatchers.Main) {
             onLoading()
         }
+
         kotlin.runCatching {
             withContext(Dispatchers.IO) {
                 block()

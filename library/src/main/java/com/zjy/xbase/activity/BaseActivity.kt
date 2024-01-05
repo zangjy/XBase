@@ -7,6 +7,7 @@ import androidx.databinding.ViewDataBinding
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
+
     @Suppress("UNCHECKED_CAST")
     val binding: VB by lazy {
         val type = javaClass.genericSuperclass as ParameterizedType
@@ -18,6 +19,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         initObservers()
         initListeners()
         initData()

@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.*
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
+
     private var _binding: VB? = null
 
     private val handler by lazy { Handler(Looper.getMainLooper()) }
@@ -29,18 +31,20 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
             val aClass = type.actualTypeArguments[0] as Class<*>
             val method = aClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
             _binding = method.invoke(null, layoutInflater) as VB
-            //销毁的时候释放ViewBinding
+
             viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
                 override fun onDestroy(owner: LifecycleOwner) {
                     handler.post { _binding = null }
                 }
             })
         }
+
         return _binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initObservers()
         initListeners()
         initData()

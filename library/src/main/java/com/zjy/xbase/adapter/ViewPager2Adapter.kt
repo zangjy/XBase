@@ -11,6 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
  * 描述：
  */
 class ViewPager2Adapter : FragmentStateAdapter {
+
     private var listener: GetData
 
     constructor(fragment: Fragment, listener: GetData) : super(fragment) {

@@ -3,21 +3,24 @@ package com.zjy.xbase.fragment
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
+
     private var isLoaded = false
 
     override fun onResume() {
         super.onResume()
-        //增加了Fragment是否可见的判断
+
         if (!isLoaded && !isHidden) {
             lazyInitObservers()
             lazyInitListeners()
             lazyInitData()
+
             isLoaded = true
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+
         isLoaded = false
     }
 
@@ -36,16 +39,9 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
      */
     abstract fun lazyInitData()
 
+    final override fun initObservers() {}
 
-    final override fun initObservers() {
+    final override fun initListeners() {}
 
-    }
-
-    final override fun initListeners() {
-
-    }
-
-    final override fun initData() {
-
-    }
+    final override fun initData() {}
 }
