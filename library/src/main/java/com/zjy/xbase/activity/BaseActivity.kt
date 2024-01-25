@@ -19,7 +19,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         initObservers()
         initListeners()
         initData()

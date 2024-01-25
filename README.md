@@ -60,26 +60,26 @@ dataBinding {
 # XBase里已经添加过的依赖
 
 ```
-//网络请求：https://github.com/square/retrofit
+//网络请求(https://github.com/square/retrofit)
 api 'com.squareup.retrofit2:retrofit:2.9.0'
 api 'com.squareup.retrofit2:converter-gson:2.9.0'
-//Gson解析容错：https://github.com/getActivity/GsonFactory
-api 'com.github.getActivity:GsonFactory:9.0'
-//Json解析框架：https://github.com/google/gson
+//Json解析(https://github.com/google/gson)
 api 'com.google.code.gson:gson:2.10.1'
-//解决LiveData出现数据倒灌问题：https://github.com/KunMinX/UnPeek-LiveData
+//Gson解析容错(https://github.com/getActivity/GsonFactory)
+api 'com.github.getActivity:GsonFactory:9.5'
+//非粘性的LiveData(https://github.com/KunMinX/UnPeek-LiveData)
 api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
-// ViewModel
-api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
-// LiveData
-api 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
-// Lifecycles only (without ViewModel or LiveData)
-api 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
-// Saved state module for ViewModel
-api 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2'
-api 'androidx.navigation:navigation-fragment-ktx:2.7.5'
-api 'androidx.navigation:navigation-ui-ktx:2.7.5'
+//ViewModel
+api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
+//LiveData
+api "androidx.lifecycle:lifecycle-livedata-ktx:2.7.0"
+//Lifecycles only (without ViewModel or LiveData)
+api "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
+//Saved state module for ViewModel
+api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0"
+api "androidx.navigation:navigation-fragment-ktx:2.7.6"
+api "androidx.navigation:navigation-ui-ktx:2.7.6"
 ```
 
 # XBase里已经添加过的权限
@@ -87,61 +87,3 @@ api 'androidx.navigation:navigation-ui-ktx:2.7.5'
 ```
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-
-# 常用框架
-
-内存泄漏检测：<https://github.com/square/leakcanary>
-
-PDF预览：<https://github.com/barteksc/AndroidPdfViewer>
-
-XPopup弹窗库：<https://github.com/li-xiaojun/XPopup>
-
-XPopupExt：<https://github.com/li-xiaojun/XPopupExt>
-
-切换不同状态布局：<https://github.com/liangjingkanji/StateLayout>
-
-ARouter：<https://github.com/alibaba/ARouter>
-
-沉浸式状态栏：<https://github.com/gyf-dev/ImmersionBar>
-
-工具类：<https://github.com/Blankj/AndroidUtilCode>
-
-OKDownLoad：<https://github.com/lingochamp/okdownload>
-
-GSYVideoPlayer：<https://github.com/CarGuo/GSYVideoPlayer>
-
-AgentWeb：<https://github.com/Justson/AgentWeb>
-
-图片选择器：<https://github.com/LuckSiege/PictureSelector>
-
-Banner：<https://github.com/youth5201314/banner>
-
-Glide：<https://github.com/bumptech/glide>
-
-Lottie：<https://github.com/airbnb/lottie-android>
-
-EventBus：<https://github.com/greenrobot/EventBus>
-
-TitleBar：<https://github.com/getActivity/TitleBar>
-
-吐司框架：<https://github.com/getActivity/ToastUtils>
-
-Gson解析容错：<https://github.com/getActivity/GsonFactory>
-
-权限请求框架：<https://github.com/guolindev/PermissionX>
-
-智能下拉刷新：<https://github.com/scwang90/SmartRefreshLayout>
-
-RecyclerView适配器：<https://github.com/CymChad/BaseRecyclerViewAdapterHelper>
-
-异常捕获框架：<https://github.com/Ereza/CustomActivityOnCrash>
-
-日期城市选择器：<https://github.com/Bigkoo/Android-PickerView>
-
-扫码库：<https://github.com/yuzhiqiang1993/zxing>
-
-FlexBoxLayout：<https://github.com/google/flexbox-layout>
-
-M3U8下载器：<https://github.com/Jay-Goo/M3U8Downloader>
-
-解决LiveData出现数据倒灌问题：<https://github.com/KunMinX/UnPeek-LiveData>

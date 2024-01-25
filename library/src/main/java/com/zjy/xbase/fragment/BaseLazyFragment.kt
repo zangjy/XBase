@@ -8,19 +8,16 @@ abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
 
     override fun onResume() {
         super.onResume()
-
         if (!isLoaded && !isHidden) {
             lazyInitObservers()
             lazyInitListeners()
             lazyInitData()
-
             isLoaded = true
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-
         isLoaded = false
     }
 

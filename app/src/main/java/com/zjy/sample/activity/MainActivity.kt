@@ -1,13 +1,11 @@
 package com.zjy.sample.activity
 
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.zjy.sample.databinding.ActivityMainBinding
 import com.zjy.sample.viewmodel.MainVM
 import com.zjy.xbase.activity.BaseActivity
 import com.zjy.xbase.ext.getViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.zjy.xbase.helper.MutableResultObserveHelper
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val mVM: MainVM by lazy {
@@ -15,26 +13,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initData() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            //查询版本
-            mVM.version()
-        }
-
-//        doAsync({ BaseVM.client.version("40", "xiaohei") }, onSuccess = {
-//            binding.tvDownLoadUrl.text = it.data
-//        }, onError = {
-//            Toast.makeText(this@MainActivity, it.message.toString(), Toast.LENGTH_SHORT).show()
-//        })
+        mVM.version()
     }
 
     override fun initObservers() {
-        mVM.versionRequestState.observe(this) { state ->
+        MutableResultObserveHelper(lifecycle, mVM.versionRequestState, { state ->
             state.map(success = {
                 binding.tvDownLoadUrl.text = it.data
             }, error = {
                 Toast.makeText(applicationContext, it.message.toString(), Toast.LENGTH_SHORT).show()
             })
-        }
+        }, MutableResultObserveHelper.ObserveType.TYPE_FOREVER)
     }
 
     override fun initListeners() {

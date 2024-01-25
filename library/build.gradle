@@ -46,23 +46,23 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //网络请求：https://github.com/square/retrofit
+    //网络请求(https://github.com/square/retrofit)
     api 'com.squareup.retrofit2:retrofit:2.9.0'
     api 'com.squareup.retrofit2:converter-gson:2.9.0'
-    //Gson解析容错：https://github.com/getActivity/GsonFactory
-    api 'com.github.getActivity:GsonFactory:9.5'
-    //Json解析框架：https://github.com/google/gson
+    //Json解析(https://github.com/google/gson)
     api 'com.google.code.gson:gson:2.10.1'
-    //解决LiveData出现数据倒灌问题：https://github.com/KunMinX/UnPeek-LiveData
+    //Gson解析容错(https://github.com/getActivity/GsonFactory)
+    api 'com.github.getActivity:GsonFactory:9.5'
+    //非粘性的LiveData(https://github.com/KunMinX/UnPeek-LiveData)
     api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
-    // ViewModel
+    //ViewModel
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:${LIFECYCLE_VERSION}"
-    // LiveData
+    //LiveData
     api "androidx.lifecycle:lifecycle-livedata-ktx:${LIFECYCLE_VERSION}"
-    // Lifecycles only (without ViewModel or LiveData)
+    //Lifecycles only (without ViewModel or LiveData)
     api "androidx.lifecycle:lifecycle-runtime-ktx:${LIFECYCLE_VERSION}"
-    // Saved state module for ViewModel
+    //Saved state module for ViewModel
     api "androidx.lifecycle:lifecycle-viewmodel-savedstate:${LIFECYCLE_VERSION}"
     api "androidx.navigation:navigation-fragment-ktx:${NAV_VERSION}"
     api "androidx.navigation:navigation-ui-ktx:${NAV_VERSION}"
