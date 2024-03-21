@@ -61,12 +61,12 @@ dataBinding {
 
 ```
 //网络请求(https://github.com/square/retrofit)
-api 'com.squareup.retrofit2:retrofit:2.9.0'
-api 'com.squareup.retrofit2:converter-gson:2.9.0'
+api 'com.squareup.retrofit2:retrofit:2.10.0'
+api 'com.squareup.retrofit2:converter-gson:2.10.0'
 //Json解析(https://github.com/google/gson)
 api 'com.google.code.gson:gson:2.10.1'
 //Gson解析容错(https://github.com/getActivity/GsonFactory)
-api 'com.github.getActivity:GsonFactory:9.5'
+api 'com.github.getActivity:GsonFactory:9.6'
 //非粘性的LiveData(https://github.com/KunMinX/UnPeek-LiveData)
 api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
@@ -78,8 +78,8 @@ api "androidx.lifecycle:lifecycle-livedata-ktx:2.7.0"
 api "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
 //Saved state module for ViewModel
 api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0"
-api "androidx.navigation:navigation-fragment-ktx:2.7.6"
-api "androidx.navigation:navigation-ui-ktx:2.7.6"
+api "androidx.navigation:navigation-fragment-ktx:2.7.7"
+api "androidx.navigation:navigation-ui-ktx:2.7.7"
 ```
 
 # XBase里已经添加过的权限
