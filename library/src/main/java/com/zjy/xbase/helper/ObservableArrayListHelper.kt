@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ObservableArrayListHelper<T>(
     private val list: ObservableArrayList<T>,
     private var adapter: RecyclerView.Adapter<*>,
-    lifecycle: Lifecycle
+    lifecycle: Lifecycle,
 ) : ObservableList.OnListChangedCallback<ObservableArrayList<T>>(), LifecycleEventObserver {
 
     init {
@@ -40,7 +40,7 @@ class ObservableArrayListHelper<T>(
     override fun onItemRangeChanged(
         sender: ObservableArrayList<T>?,
         positionStart: Int,
-        itemCount: Int
+        itemCount: Int,
     ) {
         adapter.notifyItemRangeChanged(positionStart, itemCount)
     }
@@ -48,7 +48,7 @@ class ObservableArrayListHelper<T>(
     override fun onItemRangeInserted(
         sender: ObservableArrayList<T>?,
         positionStart: Int,
-        itemCount: Int
+        itemCount: Int,
     ) {
         adapter.notifyItemRangeInserted(positionStart, itemCount)
     }
@@ -57,7 +57,7 @@ class ObservableArrayListHelper<T>(
         sender: ObservableArrayList<T>?,
         fromPosition: Int,
         toPosition: Int,
-        itemCount: Int
+        itemCount: Int,
     ) {
         if (itemCount == 1) {
             adapter.notifyItemMoved(fromPosition, toPosition)
@@ -69,7 +69,7 @@ class ObservableArrayListHelper<T>(
     override fun onItemRangeRemoved(
         sender: ObservableArrayList<T>?,
         positionStart: Int,
-        itemCount: Int
+        itemCount: Int,
     ) {
         adapter.notifyItemRangeRemoved(positionStart, itemCount)
     }

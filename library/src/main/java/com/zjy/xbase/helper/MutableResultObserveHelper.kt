@@ -16,7 +16,7 @@ class MutableResultObserveHelper<T>(
     private val lifecycle: Lifecycle,
     private val mutableResult: MutableResult<T>,
     private val observer: Observer<in T>,
-    private val observerType: ObserveType
+    private val observerType: ObserveType,
 ) : LifecycleEventObserver {
 
     init {

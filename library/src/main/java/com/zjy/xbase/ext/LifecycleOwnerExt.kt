@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
  */
 fun <T> LifecycleOwner.doAsyncWithMutableResult(
     mutableResult: MutableResult<DoAsyncState<T>>,
-    block: suspend () -> T
+    block: suspend () -> T,
 ): Job {
     return doAsync(
         block = block,
@@ -47,7 +47,7 @@ fun <T> LifecycleOwner.doAsync(
     onSuccess: (T) -> Unit,
     onError: (throwable: Throwable) -> Unit = {},
     onComplete: () -> Unit = {},
-    requiredState: Lifecycle.State = Lifecycle.State.STARTED
+    requiredState: Lifecycle.State = Lifecycle.State.STARTED,
 ): Job {
     return lifecycleScope.launch {
         withContext(Dispatchers.Main) {

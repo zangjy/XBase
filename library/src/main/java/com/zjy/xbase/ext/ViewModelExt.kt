@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
  */
 fun <T> ViewModel.doAsyncWithMutableResult(
     mutableResult: MutableResult<DoAsyncState<T>>,
-    block: suspend () -> T
+    block: suspend () -> T,
 ): Job {
     return doAsync(
         block = block,
@@ -44,7 +44,7 @@ fun <T> ViewModel.doAsync(
     onLoading: () -> Unit = {},
     onSuccess: (T) -> Unit,
     onError: (throwable: Throwable) -> Unit = {},
-    onComplete: () -> Unit = {}
+    onComplete: () -> Unit = {},
 ): Job {
     return viewModelScope.launch {
         withContext(Dispatchers.Main) {

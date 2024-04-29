@@ -24,7 +24,7 @@ sealed class DoAsyncState<out T> {
         loading: (() -> Unit)? = null,
         success: ((T) -> Unit)? = null,
         error: ((Throwable) -> Unit)? = null,
-        complete: (() -> Unit)? = null
+        complete: (() -> Unit)? = null,
     ) {
         when (this) {
             is Loading -> loading?.invoke()

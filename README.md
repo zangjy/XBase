@@ -61,8 +61,8 @@ dataBinding {
 
 ```
 //网络请求(https://github.com/square/retrofit)
-api 'com.squareup.retrofit2:retrofit:2.10.0'
-api 'com.squareup.retrofit2:converter-gson:2.10.0'
+api 'com.squareup.retrofit2:retrofit:2.11.0'
+api 'com.squareup.retrofit2:converter-gson:2.11.0'
 //Json解析(https://github.com/google/gson)
 api 'com.google.code.gson:gson:2.10.1'
 //Gson解析容错(https://github.com/getActivity/GsonFactory)

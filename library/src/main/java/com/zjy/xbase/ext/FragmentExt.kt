@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelStoreOwner
  */
 fun <T : ViewModel> Fragment.getViewModel(
     viewModelStoreOwner: ViewModelStoreOwner,
-    modelClass: Class<T>
+    modelClass: Class<T>,
 ): T {
     return ViewModelProvider(viewModelStoreOwner)[modelClass]
 }
