@@ -1,8 +1,9 @@
 package com.zjy.sample.viewmodel
 
 import com.kunminx.architecture.domain.message.MutableResult
-import com.zjy.sample.model.VersionModel
+import com.zjy.sample.model.WorkbenchModel
 import com.zjy.xbase.ext.doAsyncWithMutableResult
+import com.zjy.xbase.ext.requestWithMutableResult
 import com.zjy.xbase.net.DoAsyncState
 
 /**
@@ -12,13 +13,16 @@ import com.zjy.xbase.net.DoAsyncState
  * 描述：
  */
 class MainVM : BaseVM() {
-    var versionRequestState = MutableResult<DoAsyncState<VersionModel>>()
 
-    /**
-     * 查询版本
-     * @return Job
-     */
-    fun version() = doAsyncWithMutableResult(versionRequestState) {
-        client.version("40", "xiaohei")
+    var workbenchRequestState = MutableResult<DoAsyncState<WorkbenchModel>>()
+
+    var desValueChangeEvent = MutableResult<String>()
+
+    fun workbenchByRequest() = requestWithMutableResult(workbenchRequestState) {
+        client.workbench("111")
+    }
+
+    fun workbenchByDoAsync() = doAsyncWithMutableResult(workbenchRequestState) {
+        client.workbench("111")
     }
 }

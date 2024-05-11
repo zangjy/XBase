@@ -1,44 +1,25 @@
 package com.zjy.xbase.fragment
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.viewbinding.ViewBinding
-import java.lang.reflect.ParameterizedType
+import com.zjy.xbase.ext.inflateBindingWithGeneric
 
-abstract class BaseFragment<VB : ViewBinding> : Fragment() {
+abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
 
     private var _binding: VB? = null
+    val binding get() = _binding!!
 
-    private val handler by lazy { Handler(Looper.getMainLooper()) }
-
-    val binding get() = requireNotNull(_binding) { "ViewBinding已被销毁" }
-
-    @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        if (_binding == null) {
-            val type = javaClass.genericSuperclass as ParameterizedType
-            val aClass = type.actualTypeArguments[0] as Class<*>
-            val method = aClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
-            _binding = method.invoke(null, layoutInflater) as VB
-
-            viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
-                override fun onDestroy(owner: LifecycleOwner) {
-                    handler.post { _binding = null }
-                }
-            })
-        }
-        return _binding!!.root
+        _binding = inflateBindingWithGeneric(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +27,11 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         initObservers()
         initListeners()
         initData()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     /**

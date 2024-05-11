@@ -1,19 +1,14 @@
 package com.zjy.xbase.activity
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
-import java.lang.reflect.ParameterizedType
+import com.zjy.xbase.ext.inflateBindingWithGeneric
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
-    @Suppress("UNCHECKED_CAST")
     val binding: VB by lazy {
-        val type = javaClass.genericSuperclass as ParameterizedType
-        val aClass = type.actualTypeArguments[0] as Class<*>
-        val method = aClass.getDeclaredMethod("inflate", LayoutInflater::class.java)
-        method.invoke(null, layoutInflater) as VB
+        inflateBindingWithGeneric(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

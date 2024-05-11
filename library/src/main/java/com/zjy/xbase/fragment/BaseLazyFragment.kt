@@ -1,8 +1,8 @@
 package com.zjy.xbase.fragment
 
-import androidx.viewbinding.ViewBinding
+import androidx.databinding.ViewDataBinding
 
-abstract class BaseLazyFragment<VB : ViewBinding> : BaseFragment<VB>() {
+abstract class BaseLazyFragment<VB : ViewDataBinding> : BaseFragment<VB>() {
 
     private var isLoaded = false
 

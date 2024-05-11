@@ -13,7 +13,7 @@ import com.zjy.xbase.net.RetrofitClient
 open class BaseVM : ViewModel() {
     companion object {
         val client: API by lazy {
-            RetrofitClient.getService("https://api.sdymei.com/", API::class.java)
+            RetrofitClient.getService(API.BASE_URL, API::class.java)
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.zjy.sample.net
 
-import com.zjy.sample.model.VersionModel
+import com.zjy.sample.model.WorkbenchModel
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,12 +11,13 @@ import retrofit2.http.Query
  * 描述：API接口
  */
 interface API {
-    /**
-     * 查询版本信息
-     */
-    @GET("api/user/android/version")
-    suspend fun version(
-        @Query("code") code: String,
-        @Query("companyId") companyId: String
-    ): VersionModel
+
+    companion object {
+        const val BASE_URL = "http://crmapi.sdymei.com/"
+    }
+
+    @GET("api/jingle/marketing/workbench")
+    suspend fun workbench(
+        @Query("token") token: String,
+    ): WorkbenchModel
 }
