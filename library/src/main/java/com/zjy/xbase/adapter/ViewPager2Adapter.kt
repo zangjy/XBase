@@ -2,6 +2,8 @@ package com.zjy.xbase.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 /**
@@ -14,11 +16,25 @@ class ViewPager2Adapter : FragmentStateAdapter {
 
     private var listener: GetData
 
-    constructor(fragment: Fragment, listener: GetData) : super(fragment) {
+    constructor(
+        fragment: Fragment,
+        listener: GetData,
+    ) : super(fragment) {
         this.listener = listener
     }
 
-    constructor(fragmentActivity: FragmentActivity, listener: GetData) : super(fragmentActivity) {
+    constructor(
+        fragmentActivity: FragmentActivity,
+        listener: GetData,
+    ) : super(fragmentActivity) {
+        this.listener = listener
+    }
+
+    constructor(
+        fragmentManager: FragmentManager,
+        lifecycle: Lifecycle,
+        listener: GetData,
+    ) : super(fragmentManager, lifecycle) {
         this.listener = listener
     }
 
