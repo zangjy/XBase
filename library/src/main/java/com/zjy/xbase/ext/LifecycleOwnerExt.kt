@@ -45,7 +45,7 @@ fun <T : BaseResp> LifecycleOwner.requestWithMutableResult(
 fun <T : BaseResp> LifecycleOwner.request(
     block: suspend () -> T,
     onLoading: () -> Unit = {},
-    onSuccess: (T) -> Unit,
+    onSuccess: (T) -> Unit = {},
     onError: (throwable: Throwable) -> Unit = {},
     onComplete: () -> Unit = {},
     requiredState: Lifecycle.State = Lifecycle.State.STARTED,
@@ -94,7 +94,7 @@ fun <T> LifecycleOwner.doAsyncWithMutableResult(
 fun <T> LifecycleOwner.doAsync(
     block: suspend () -> T,
     onLoading: () -> Unit = {},
-    onSuccess: (T) -> Unit,
+    onSuccess: (T) -> Unit = {},
     onError: (throwable: Throwable) -> Unit = {},
     onComplete: () -> Unit = {},
     requiredState: Lifecycle.State = Lifecycle.State.STARTED,

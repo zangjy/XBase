@@ -43,7 +43,7 @@ fun <T : BaseResp> ViewModel.requestWithMutableResult(
 fun <T : BaseResp> ViewModel.request(
     block: suspend () -> T,
     onLoading: () -> Unit = {},
-    onSuccess: (T) -> Unit,
+    onSuccess: (T) -> Unit = {},
     onError: (throwable: Throwable) -> Unit = {},
     onComplete: () -> Unit = {},
 ): Job {
@@ -90,7 +90,7 @@ fun <T> ViewModel.doAsyncWithMutableResult(
 fun <T> ViewModel.doAsync(
     block: suspend () -> T,
     onLoading: () -> Unit = {},
-    onSuccess: (T) -> Unit,
+    onSuccess: (T) -> Unit = {},
     onError: (throwable: Throwable) -> Unit = {},
     onComplete: () -> Unit = {},
 ): Job {
