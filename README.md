@@ -64,20 +64,20 @@ dataBinding {
 api 'com.squareup.retrofit2:retrofit:2.11.0'
 api 'com.squareup.retrofit2:converter-gson:2.11.0'
 //Json解析(https://github.com/google/gson)
-api 'com.google.code.gson:gson:2.10.1'
+api 'com.google.code.gson:gson:2.11.0'
 //Gson解析容错(https://github.com/getActivity/GsonFactory)
 api 'com.github.getActivity:GsonFactory:9.6'
 //非粘性的LiveData(https://github.com/KunMinX/UnPeek-LiveData)
 api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
 //ViewModel
-api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
+api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0"
 //LiveData
-api "androidx.lifecycle:lifecycle-livedata-ktx:2.7.0"
+api "androidx.lifecycle:lifecycle-livedata-ktx:2.8.0"
 //Lifecycles only (without ViewModel or LiveData)
-api "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
+api "androidx.lifecycle:lifecycle-runtime-ktx:2.8.0"
 //Saved state module for ViewModel
-api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0"
+api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.0"
 api "androidx.navigation:navigation-fragment-ktx:2.7.7"
 api "androidx.navigation:navigation-ui-ktx:2.7.7"
 ```

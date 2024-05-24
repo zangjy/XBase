@@ -131,10 +131,19 @@ fun <T> LifecycleOwner.doAsync(
 }
 
 /**
+ * 检查页面是否处于活动状态
+ * @receiver LifecycleOwner
+ * @return 如果页面活动状态，则返回true，否则为false
+ */
+fun LifecycleOwner.isAlive(): Boolean {
+    return isLifecycleStateAtLeast(Lifecycle.State.STARTED)
+}
+
+/**
  * 检查页面是否处于指定状态或更高状态
  * @receiver LifecycleOwner
  * @return 如果页面处于指定状态或更高状态返回true，否则为false
  */
-private fun LifecycleOwner.isLifecycleStateAtLeast(requiredState: Lifecycle.State): Boolean {
+fun LifecycleOwner.isLifecycleStateAtLeast(requiredState: Lifecycle.State): Boolean {
     return lifecycle.currentState.isAtLeast(requiredState)
 }
