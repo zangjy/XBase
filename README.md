@@ -71,13 +71,13 @@ api 'com.github.getActivity:GsonFactory:9.6'
 api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
 //ViewModel
-api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0"
+api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1"
 //LiveData
-api "androidx.lifecycle:lifecycle-livedata-ktx:2.8.0"
+api "androidx.lifecycle:lifecycle-livedata-ktx:2.8.1"
 //Lifecycles only (without ViewModel or LiveData)
-api "androidx.lifecycle:lifecycle-runtime-ktx:2.8.0"
+api "androidx.lifecycle:lifecycle-runtime-ktx:2.8.1"
 //Saved state module for ViewModel
-api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.0"
+api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.1"
 api "androidx.navigation:navigation-fragment-ktx:2.7.7"
 api "androidx.navigation:navigation-ui-ktx:2.7.7"
 ```
