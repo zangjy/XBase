@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -37,7 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setAdapter()
 
         job = CoroutineScope(Dispatchers.IO).launch {
-            while (true) {
+            while (isActive) {
                 delay(100L)
                 mVM.desValueChangeEvent.postValue(generateRandomString())
             }

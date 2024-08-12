@@ -99,20 +99,20 @@ fun <T> ViewModel.doAsync(
             onLoading()
         }
 
-        kotlin.runCatching {
+        suspendRunCatching {
             withContext(Dispatchers.IO) {
                 block()
             }
         }.onSuccess {
-            withContext(Dispatchers.Main) {
+            runOnMainIfActive {
                 onSuccess(it)
             }
         }.onFailure {
-            withContext(Dispatchers.Main) {
+            runOnMainIfActive {
                 onError(it)
             }
         }.also {
-            withContext(Dispatchers.Main) {
+            runOnMainIfActive {
                 onComplete()
             }
         }

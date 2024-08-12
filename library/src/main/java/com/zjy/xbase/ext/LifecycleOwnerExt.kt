@@ -39,7 +39,6 @@ fun <T : BaseResp> LifecycleOwner.requestWithMutableResult(
  * @param onSuccess 请求成功时的回调
  * @param onError 请求失败时的回调
  * @param onComplete 请求完成时的回调
- * @param requiredState 回调的最低生命周期状态
  * @return 返回一个Job对象，可以用于取消网络请求
  */
 fun <T : BaseResp> LifecycleOwner.request(
@@ -48,7 +47,6 @@ fun <T : BaseResp> LifecycleOwner.request(
     onSuccess: (T) -> Unit = {},
     onError: (throwable: Throwable) -> Unit = {},
     onComplete: () -> Unit = {},
-    requiredState: Lifecycle.State = Lifecycle.State.STARTED,
 ): Job {
     return doAsync(block, onLoading, onSuccess = {
         val (state, exception) = it.paresResp()
@@ -57,7 +55,7 @@ fun <T : BaseResp> LifecycleOwner.request(
         } else {
             onError(exception)
         }
-    }, onError, onComplete, requiredState)
+    }, onError, onComplete)
 }
 
 /**
@@ -88,7 +86,6 @@ fun <T> LifecycleOwner.doAsyncWithMutableResult(
  * @param onSuccess 成功时的回调
  * @param onError 失败时的回调
  * @param onComplete 完成时的回调
- * @param requiredState 回调的最低生命周期状态
  * @return 返回一个Job对象，可以用于取消异步任务
  */
 fun <T> LifecycleOwner.doAsync(
@@ -97,34 +94,27 @@ fun <T> LifecycleOwner.doAsync(
     onSuccess: (T) -> Unit = {},
     onError: (throwable: Throwable) -> Unit = {},
     onComplete: () -> Unit = {},
-    requiredState: Lifecycle.State = Lifecycle.State.STARTED,
 ): Job {
     return lifecycleScope.launch {
         withContext(Dispatchers.Main) {
             onLoading()
         }
 
-        kotlin.runCatching {
+        suspendRunCatching {
             withContext(Dispatchers.IO) {
                 block()
             }
         }.onSuccess {
-            withContext(Dispatchers.Main) {
-                if (isLifecycleStateAtLeast(requiredState)) {
-                    onSuccess(it)
-                }
+            runOnMainIfActive {
+                onSuccess(it)
             }
         }.onFailure {
-            withContext(Dispatchers.Main) {
-                if (isLifecycleStateAtLeast(requiredState)) {
-                    onError(it)
-                }
+            runOnMainIfActive {
+                onError(it)
             }
         }.also {
-            withContext(Dispatchers.Main) {
-                if (isLifecycleStateAtLeast(requiredState)) {
-                    onComplete()
-                }
+            runOnMainIfActive {
+                onComplete()
             }
         }
     }
@@ -135,15 +125,6 @@ fun <T> LifecycleOwner.doAsync(
  * @receiver LifecycleOwner
  * @return 如果页面活动状态，则返回true，否则为false
  */
-fun LifecycleOwner.isAlive(): Boolean {
-    return isLifecycleStateAtLeast(Lifecycle.State.STARTED)
-}
-
-/**
- * 检查页面是否处于指定状态或更高状态
- * @receiver LifecycleOwner
- * @return 如果页面处于指定状态或更高状态返回true，否则为false
- */
-fun LifecycleOwner.isLifecycleStateAtLeast(requiredState: Lifecycle.State): Boolean {
-    return lifecycle.currentState.isAtLeast(requiredState)
+fun LifecycleOwner.isActive(): Boolean {
+    return lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)
 }

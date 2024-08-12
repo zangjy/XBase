@@ -1,7 +1,6 @@
 package com.zjy.sample.fragment
 
 import android.annotation.SuppressLint
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.hjq.gson.factory.GsonFactory
 import com.zjy.sample.databinding.Fragment1Binding
@@ -27,10 +26,9 @@ class Fragment1 : BaseFragment<Fragment1Binding>() {
     override fun initObservers() {
         MutableResultObserveHelper(lifecycle, mVM.workbenchRequestState, { state ->
             state.map(success = {
-                binding.tvDes.text = "Success方法回调：${gson.toJson(it)}"
+                binding.tvDes.text = "Success回调：\n${gson.toJson(it)}"
             }, error = {
-                binding.tvDes.text = "Error方法回调：${gson.toJson(it.message.toString())}"
-                Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
+                binding.tvDes.text = "Error回调：\n${gson.toJson(it.message.toString())}"
             })
         }, MutableResultObserveHelper.ObserveType.TYPE_FOREVER)
     }
