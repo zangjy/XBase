@@ -10,14 +10,12 @@ import com.zjy.xbase.net.BaseResp
  * 描述：
  */
 open class BaseModel(
-    @SerializedName("count")
-    var count: Int = 0,
-    @SerializedName("status")
-    var status: String = "0",
-    @SerializedName("message")
-    var message: String = "",
+    @SerializedName("errorCode")
+    var errorCode: Int = 0,
+    @SerializedName("errorMsg")
+    var errorMsg: String = "",
 ) : BaseResp() {
     override fun paresResp(): Pair<Boolean, Throwable> {
-        return Pair(status == "0", Throwable(message))
+        return Pair(errorCode != -1, Throwable(errorMsg))
     }
 }

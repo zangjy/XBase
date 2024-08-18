@@ -2,11 +2,15 @@ package com.zjy.sample.fragment
 
 import android.annotation.SuppressLint
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.hjq.gson.factory.GsonFactory
 import com.zjy.sample.databinding.Fragment1Binding
+import com.zjy.sample.ui.intent.MainIntent
+import com.zjy.sample.ui.state.LoginUIState
 import com.zjy.sample.viewmodel.MainVM
 import com.zjy.xbase.fragment.BaseFragment
-import com.zjy.xbase.helper.MutableResultObserveHelper
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 /**
  * 文件名：TestFragment
@@ -24,22 +28,32 @@ class Fragment1 : BaseFragment<Fragment1Binding>() {
     }
 
     override fun initObservers() {
-        MutableResultObserveHelper(lifecycle, mVM.workbenchRequestState, { state ->
-            state.map(success = {
-                binding.tvDes.text = "Success回调：\n${gson.toJson(it)}"
-            }, error = {
-                binding.tvDes.text = "Error回调：\n${gson.toJson(it.message.toString())}"
-            })
-        }, MutableResultObserveHelper.ObserveType.TYPE_FOREVER)
+        lifecycleScope.launch {
+            mVM.uiStateFlow.map { it.loginUIState }.collect { loginUIState ->
+                when (loginUIState) {
+                    is LoginUIState.Success -> {
+                        binding.tvDes.text =
+                            "Success回调：\n${gson.toJson(loginUIState.loginModel)}"
+                    }
+
+                    is LoginUIState.Error -> {
+                        binding.tvDes.text =
+                            "Error回调：\n${loginUIState.throwable.message}"
+                    }
+
+                    else -> {}
+                }
+            }
+        }
     }
 
     override fun initListeners() {
         binding.mbRequest.setOnClickListener {
-            mVM.workbenchByRequest()
+            mVM.sendUiIntent(MainIntent.LoginByRequest)
         }
 
         binding.mbDoSync.setOnClickListener {
-            mVM.workbenchByDoAsync()
+            mVM.sendUiIntent(MainIntent.LoginByDoAsync)
         }
     }
 

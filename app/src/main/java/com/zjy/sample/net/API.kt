@@ -1,8 +1,9 @@
 package com.zjy.sample.net
 
-import com.zjy.sample.model.WorkbenchModel
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.zjy.sample.bean.LoginReqBean
+import com.zjy.sample.model.LoginModel
+import retrofit2.http.Body
+import retrofit2.http.POST
 
 /**
  * 文件名：API
@@ -13,11 +14,9 @@ import retrofit2.http.Query
 interface API {
 
     companion object {
-        const val BASE_URL = "http://crmapi.sdymei.com/"
+        const val BASE_URL = "https://www.wanandroid.com/"
     }
 
-    @GET("api/jingle/marketing/workbench")
-    suspend fun workbench(
-        @Query("token") token: String,
-    ): WorkbenchModel
+    @POST("user/login")
+    suspend fun login(@Body loginReqBean: LoginReqBean): LoginModel
 }
