@@ -27,7 +27,7 @@ abstract class BaseViewModel<UiState : IUiState, UiIntent : IUiIntent> : ViewMod
     private val _uiIntentFlow: Channel<UiIntent> = Channel(capacity = UNLIMITED)
     val uiIntentFlow: Flow<UiIntent> = _uiIntentFlow.receiveAsFlow()
 
-    abstract fun initUiState(): UiState
+    protected abstract fun initUiState(): UiState
 
     fun sendUiState(uiState: UiState.() -> UiState) {
         _uiStateFlow.update { currentUiState -> uiState(currentUiState) }
@@ -41,7 +41,7 @@ abstract class BaseViewModel<UiState : IUiState, UiIntent : IUiIntent> : ViewMod
         }
     }
 
-    abstract fun handlerIntent(uiIntent: UiIntent)
+    protected abstract fun handlerIntent(uiIntent: UiIntent)
 
     fun sendUiIntent(uiIntent: UiIntent) {
         viewModelScope.launch {
