@@ -71,15 +71,15 @@ api 'com.github.getActivity:GsonFactory:9.6'
 api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
 //ViewModel
-api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4"
+api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
 //LiveData
-api "androidx.lifecycle:lifecycle-livedata-ktx:2.8.4"
+api "androidx.lifecycle:lifecycle-livedata-ktx:2.8.7"
 //Lifecycles only (without ViewModel or LiveData)
-api "androidx.lifecycle:lifecycle-runtime-ktx:2.8.4"
+api "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
 //Saved state module for ViewModel
-api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.4"
-api "androidx.navigation:navigation-fragment-ktx:2.7.7"
-api "androidx.navigation:navigation-ui-ktx:2.7.7"
+api "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7"
+api "androidx.navigation:navigation-fragment-ktx:2.8.5"
+api "androidx.navigation:navigation-ui-ktx:2.8.5"
 ```
 
 # XBase里已经添加过的权限
